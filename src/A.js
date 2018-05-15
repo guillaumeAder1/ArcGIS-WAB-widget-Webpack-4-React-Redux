@@ -28,10 +28,9 @@ class A extends React.Component {
         const current = this.state.selected;
         return (
             <div>
-                <h1>A component</h1>
+                <h1>A component after</h1>
                 {current}
-                <B list={[1, 2, 3, 4, 5, 6]} callBack={e => this.changevalue(e)} />
-
+                <B list={[1, 2, 3, 4, 5, 6]} map={this.props.map} callBack={e => this.changevalue(e)} />
             </div>
         )
     }

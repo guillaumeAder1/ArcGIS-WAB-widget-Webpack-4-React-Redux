@@ -1,4 +1,4 @@
-define(["esri/layers/FeatureLayer"], function(__WEBPACK_EXTERNAL_MODULE_esri_layers_FeatureLayer__) { return /******/ (function(modules) { // webpackBootstrap
+define(["esri/arcgis/utils","esri/dijit/LayerList","esri/layers/FeatureLayer","esri/toolbars/draw"], function(__WEBPACK_EXTERNAL_MODULE_esri_arcgis_utils__, __WEBPACK_EXTERNAL_MODULE_esri_dijit_LayerList__, __WEBPACK_EXTERNAL_MODULE_esri_layers_FeatureLayer__, __WEBPACK_EXTERNAL_MODULE_esri_toolbars_draw__) { return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -17648,6 +17648,36 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+function _interopDefault(e){return e&&"object"==typeof e&&"default"in e?e.default:e}Object.defineProperty(exports,"__esModule",{value:!0});var React=_interopDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js")),classCallCheck=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},inherits=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)},possibleConstructorReturn=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t},AppContainer=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,e.apply(this,arguments))}return inherits(t,e),t.prototype.render=function(){return React.Children.only(this.props.children)},t}(React.Component),hot_prod=function(){return function(e){return e}},areComponentsEqual=function(e,t){return e===t},setConfig=function(){};exports.AppContainer=AppContainer,exports.hot=hot_prod,exports.areComponentsEqual=areComponentsEqual,exports.setConfig=setConfig;
+
+
+/***/ }),
+
+/***/ "./node_modules/react-hot-loader/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/react-hot-loader/index.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (true) {
+  module.exports = __webpack_require__(/*! ./dist/react-hot-loader.production.min.js */ "./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js");
+} else {}
+
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
@@ -19091,6 +19121,39 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/webpack/buildin/module.js":
+/*!***********************************!*\
+  !*** (webpack)/buildin/module.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+
 /***/ "./src/A.js":
 /*!******************!*\
   !*** ./src/A.js ***!
@@ -19099,7 +19162,7 @@ if (false) {} else {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19120,6 +19183,12 @@ var _FeatureLayer = __webpack_require__(/*! esri/layers/FeatureLayer */ "esri/la
 var _FeatureLayer2 = _interopRequireDefault(_FeatureLayer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+    enterModule && enterModule(module);
+})();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -19168,21 +19237,47 @@ var A = function (_React$Component) {
                 _react2.default.createElement(
                     'h1',
                     null,
-                    'A component'
+                    'A component after'
                 ),
                 current,
-                _react2.default.createElement(_B2.default, { list: [1, 2, 3, 4, 5, 6], callBack: function callBack(e) {
+                _react2.default.createElement(_B2.default, { list: [1, 2, 3, 4, 5, 6], map: this.props.map, callBack: function callBack(e) {
                         return _this2.changevalue(e);
                     } })
             );
+        }
+    }, {
+        key: '__reactstandin__regenerateByEval',
+        // @ts-ignore
+        value: function __reactstandin__regenerateByEval(key, code) {
+            // @ts-ignore
+            this[key] = eval(code);
         }
     }]);
 
     return A;
 }(_react2.default.Component);
 
-exports.default = A;
+var _default = A;
+exports.default = _default;
+;
+
+(function () {
+    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(A, 'A', 'C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/A.js');
+    reactHotLoader.register(_default, 'default', 'C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/A.js');
+    leaveModule(module);
+})();
+
+;
 module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
 
 /***/ }),
 
@@ -19194,7 +19289,7 @@ module.exports = exports['default'];
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19206,7 +19301,25 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _draw = __webpack_require__(/*! esri/toolbars/draw */ "esri/toolbars/draw");
+
+var _draw2 = _interopRequireDefault(_draw);
+
+var _LayerList = __webpack_require__(/*! esri/dijit/LayerList */ "esri/dijit/LayerList");
+
+var _LayerList2 = _interopRequireDefault(_LayerList);
+
+var _utils = __webpack_require__(/*! esri/arcgis/utils */ "esri/arcgis/utils");
+
+var _utils2 = _interopRequireDefault(_utils);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+    enterModule && enterModule(module);
+})();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -19217,18 +19330,51 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var B = function (_React$Component) {
     _inherits(B, _React$Component);
 
-    function B() {
+    function B(props) {
         _classCallCheck(this, B);
 
-        return _possibleConstructorReturn(this, (B.__proto__ || Object.getPrototypeOf(B)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (B.__proto__ || Object.getPrototypeOf(B)).call(this, props));
+
+        _this.state = {
+            isDrawing: false
+        };
+        return _this;
     }
 
     _createClass(B, [{
-        key: "render",
-        value: function render() {
+        key: "componentDidMount",
+        value: function componentDidMount() {
             var _this2 = this;
 
+            if (!this.myWidget) {
+                _utils2.default.createMap(this.props.map.itemId, "map").then(function (response) {
+                    _this2.myWidget = new _LayerList2.default({
+                        map: response.map,
+                        layers: _utils2.default.getLayerList(response)
+                    }, "layerList");
+                    _this2.myWidget.startup();
+                });
+                this.draw = new _draw2.default(this.props.map, {
+                    tooltipOffset: 20,
+                    drawTime: 90
+                });
+            }
+        }
+    }, {
+        key: "startDrawing",
+        value: function startDrawing(bool) {
+            this.setState({
+                isDrawing: !this.state.isDrawing
+            });
+            bool ? this.draw.activate(_draw2.default.POLYGON) : this.draw.deactivate();
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this3 = this;
+
             var l = this.props.list;
+
             return _react2.default.createElement(
                 "div",
                 null,
@@ -19237,24 +19383,57 @@ var B = function (_React$Component) {
                     null,
                     "B component"
                 ),
+                _react2.default.createElement(
+                    "button",
+                    { onClick: function onClick() {
+                            return _this3.startDrawing(!_this3.state.isDrawing);
+                        } },
+                    "start drawing"
+                ),
                 l.map(function (v, i) {
                     return _react2.default.createElement(
                         "div",
                         { key: i, onClick: function onClick(e) {
-                                return _this2.props.callBack(v);
+                                return _this3.props.callBack(v);
                             } },
                         v.toString() + " item in the list  "
                     );
                 })
             );
         }
+    }, {
+        key: "__reactstandin__regenerateByEval",
+        // @ts-ignore
+        value: function __reactstandin__regenerateByEval(key, code) {
+            // @ts-ignore
+            this[key] = eval(code);
+        }
     }]);
 
     return B;
 }(_react2.default.Component);
 
-exports.default = B;
+var _default = B;
+exports.default = _default;
+;
+
+(function () {
+    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(B, "B", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/B.js");
+    reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/B.js");
+    leaveModule(module);
+})();
+
+;
 module.exports = exports["default"];
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
 
 /***/ }),
 
@@ -19266,7 +19445,7 @@ module.exports = exports["default"];
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19286,6 +19465,12 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+(function () {
+    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+    enterModule && enterModule(module);
+})();
+
 var App = function App(props) {
     return _react2.default.createElement(_A2.default, props);
 };
@@ -19294,8 +19479,49 @@ App.load = function (props) {
     _reactDom2.default.render(_react2.default.createElement(App, props), document.getElementById("react-legend"));
 };
 
-exports.default = App;
+var _default = App;
+exports.default = _default;
+;
+
+(function () {
+    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(App, "App", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/index.js");
+    reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/index.js");
+    leaveModule(module);
+})();
+
+;
 module.exports = exports["default"];
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
+/***/ "esri/arcgis/utils":
+/*!************************************!*\
+  !*** external "esri/arcgis/utils" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_esri_arcgis_utils__;
+
+/***/ }),
+
+/***/ "esri/dijit/LayerList":
+/*!***************************************!*\
+  !*** external "esri/dijit/LayerList" ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_esri_dijit_LayerList__;
 
 /***/ }),
 
@@ -19307,6 +19533,17 @@ module.exports = exports["default"];
 /***/ (function(module, exports) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_esri_layers_FeatureLayer__;
+
+/***/ }),
+
+/***/ "esri/toolbars/draw":
+/*!*************************************!*\
+  !*** external "esri/toolbars/draw" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_esri_toolbars_draw__;
 
 /***/ })
 

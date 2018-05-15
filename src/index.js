@@ -12,4 +12,4 @@ App.load = (props) => {
     ReactDOM.render(<App {...props} />, document.getElementById("react-legend"));
 }
 
-export default App;
+export default App
