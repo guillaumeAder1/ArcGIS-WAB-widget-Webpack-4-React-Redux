@@ -5,9 +5,9 @@ var pkg = require('./package.json');
 module.exports = {
     devtool: 'source-map',
     entry: {
-        // Widget's entry point
+        // Widget's entry point and all source code
         main: path.resolve(__dirname, './src/index'),
-        // Vendors entry point (shared libraries).
+        // Vendors entry point (shared libraries React, Redux...).
         vendors: Object.keys(pkg.dependencies)
     },
     output: {
@@ -40,16 +40,6 @@ module.exports = {
                 'esri',
                 'jimu'
             ];
-
-            // if (/^dojo\//.test(request) ||
-            //     /^dojox\//.test(request) ||
-            //     /^dijit\//.test(request) ||
-            //     /^esri\//.test(request) ||
-            //     request == 'esri/layers/FeatureLayer'
-            // ) {
-            //     return callback(null, "amd " + request);
-            // }
-            // callback();
 
             var isExternal = externals.reduce(function (prevValue, nextValue) {
                 return prevValue || new RegExp('^' + nextValue).test(request);

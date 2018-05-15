@@ -19,7 +19,7 @@ define([
   'dojo/_base/lang',
   'dojo/_base/html',
   'dojo/on',
-  './dist/vendors',
+  './dist/vendors', // load react. ReactDOM and other dependencies...
   'dijit/_WidgetsInTemplateMixin',
   'jimu/BaseWidget',
   'jimu/LayerInfos/LayerInfos',
@@ -43,16 +43,17 @@ define([
 
       startup: function () {
 
-
       },
 
       onOpen: function () {
+        // load widget
         require(['./widgets/Legend/dist/main.js'], function (widget) {
           widget.load({ map: this.map, config: this.config })
         }.bind(this))
       },
 
       onClose: function () {
+
       },
 
     });
