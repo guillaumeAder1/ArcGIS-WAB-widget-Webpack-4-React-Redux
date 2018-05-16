@@ -1,2 +1,534 @@
-define(["esri/layers/FeatureLayer","esri/arcgis/utils","esri/dijit/LayerList","esri/toolbars/draw"],function(__WEBPACK_EXTERNAL_MODULE__15__,__WEBPACK_EXTERNAL_MODULE__17__,__WEBPACK_EXTERNAL_MODULE__18__,__WEBPACK_EXTERNAL_MODULE__19__){return function(e){function t(t){for(var a,u,i=t[0],_=t[1],l=t[2],c=0,p=[];c<i.length;c++)u=i[c],n[u]&&p.push(n[u][0]),n[u]=0;for(a in _)Object.prototype.hasOwnProperty.call(_,a)&&(e[a]=_[a]);for(s&&s(t);p.length;)p.shift()();return o.push.apply(o,l||[]),r()}function r(){for(var e,t=0;t<o.length;t++){for(var r=o[t],a=!0,i=1;i<r.length;i++){var _=r[i];0!==n[_]&&(a=!1)}a&&(o.splice(t--,1),e=u(u.s=r[0]))}return e}var a={},n={1:0},o=[];function u(t){if(a[t])return a[t].exports;var r=a[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,u),r.l=!0,r.exports}u.m=e,u.c=a,u.d=function(e,t,r){u.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},u.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},u.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return u.d(t,"a",t),t},u.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u.p="/";var i=window.webpackJsonp=window.webpackJsonp||[],_=i.push.bind(i);i.push=t,i=i.slice();for(var l=0;l<i.length;l++)t(i[l]);var s=_;return o.push([23,0]),r()}([,,,,,,,,,,,,,,,function(e,t){e.exports=__WEBPACK_EXTERNAL_MODULE__15__},,function(e,t){e.exports=__WEBPACK_EXTERNAL_MODULE__17__},function(e,t){e.exports=__WEBPACK_EXTERNAL_MODULE__18__},function(e,t){e.exports=__WEBPACK_EXTERNAL_MODULE__19__},function(module,exports,__webpack_require__){"use strict";(function(module){Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var a=t[r];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,r,a){return r&&e(t.prototype,r),a&&e(t,a),t}}(),_react=__webpack_require__(1),_react2=_interopRequireDefault(_react),_draw=__webpack_require__(19),_draw2=_interopRequireDefault(_draw),_LayerList=__webpack_require__(18),_LayerList2=_interopRequireDefault(_LayerList),_utils=__webpack_require__(17),_utils2=_interopRequireDefault(_utils),enterModule;function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}enterModule=__webpack_require__(0).enterModule,enterModule&&enterModule(module);var B=function(_React$Component){function B(e){_classCallCheck(this,B);var t=_possibleConstructorReturn(this,(B.__proto__||Object.getPrototypeOf(B)).call(this,e));return t.state={isDrawing:!1},t}return _inherits(B,_React$Component),_createClass(B,[{key:"componentDidMount",value:function(){var e=this;this.myWidget||(_utils2.default.createMap(this.props.map.itemId,"map").then(function(t){e.myWidget=new _LayerList2.default({map:t.map,layers:_utils2.default.getLayerList(t)},"layerList"),e.myWidget.startup()}),this.draw=new _draw2.default(this.props.map,{tooltipOffset:20,drawTime:90}))}},{key:"startDrawing",value:function(e){this.setState({isDrawing:!this.state.isDrawing}),e?this.draw.activate(_draw2.default.POLYGON):this.draw.deactivate()}},{key:"render",value:function(){var e=this,t=this.props.list;return _react2.default.createElement("div",null,_react2.default.createElement("h2",null,"B component"),_react2.default.createElement("button",{onClick:function(){return e.startDrawing(!e.state.isDrawing)}},"start drawing"),t.map(function(t,r){return _react2.default.createElement("div",{key:r,onClick:function(r){return e.props.callBack(t)}},t.toString()+" item in the list  ")}))}},{key:"__reactstandin__regenerateByEval",value:function __reactstandin__regenerateByEval(key,code){this[key]=eval(code)}}]),B}(_react2.default.Component),_default=B,reactHotLoader,leaveModule;exports.default=_default,reactHotLoader=__webpack_require__(0).default,leaveModule=__webpack_require__(0).leaveModule,reactHotLoader&&(reactHotLoader.register(B,"B","C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/B.js"),reactHotLoader.register(_default,"default","C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/B.js"),leaveModule(module)),module.exports=exports.default}).call(this,__webpack_require__(2)(module))},,function(module,exports,__webpack_require__){"use strict";(function(module){Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var a=t[r];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,r,a){return r&&e(t.prototype,r),a&&e(t,a),t}}(),_react=__webpack_require__(1),_react2=_interopRequireDefault(_react),_B=__webpack_require__(20),_B2=_interopRequireDefault(_B),_FeatureLayer=__webpack_require__(15),_FeatureLayer2=_interopRequireDefault(_FeatureLayer),enterModule;function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}enterModule=__webpack_require__(0).enterModule,enterModule&&enterModule(module);var A=function(_React$Component){function A(e){_classCallCheck(this,A);var t=_possibleConstructorReturn(this,(A.__proto__||Object.getPrototypeOf(A)).call(this,e));return t.state={selected:null},t.firePerimeterFL=new _FeatureLayer2.default("https://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire/FeatureServer/2",{mode:_FeatureLayer2.default.MODE_ONDEMAND,outFields:["*"],id:"firePerimeterFL"}),t.props.map.addLayer(t.firePerimeterFL),t}return _inherits(A,_React$Component),_createClass(A,[{key:"changevalue",value:function(e){this.setState(function(t,r){return{selected:e}})}},{key:"render",value:function(){var e=this,t=this.state.selected;return _react2.default.createElement("div",null,_react2.default.createElement("h1",null,"A component after"),t,_react2.default.createElement(_B2.default,{list:[1,2,3,4,5,6],map:this.props.map,callBack:function(t){return e.changevalue(t)}}))}},{key:"__reactstandin__regenerateByEval",value:function __reactstandin__regenerateByEval(key,code){this[key]=eval(code)}}]),A}(_react2.default.Component),_default=A,reactHotLoader,leaveModule;exports.default=_default,reactHotLoader=__webpack_require__(0).default,leaveModule=__webpack_require__(0).leaveModule,reactHotLoader&&(reactHotLoader.register(A,"A","C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/A.js"),reactHotLoader.register(_default,"default","C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/A.js"),leaveModule(module)),module.exports=exports.default}).call(this,__webpack_require__(2)(module))},function(e,t,r){"use strict";(function(e){Object.defineProperty(t,"__esModule",{value:!0});var a,n=i(r(22)),o=i(r(1)),u=i(r(14));function i(e){return e&&e.__esModule?e:{default:e}}(a=r(0).enterModule)&&a(e);var _=function(e){return o.default.createElement(n.default,e)};_.load=function(e){u.default.render(o.default.createElement(_,e),document.getElementById("react-legend"))};var l,s,c=_;t.default=c,l=r(0).default,s=r(0).leaveModule,l&&(l.register(_,"App","C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/index.js"),l.register(c,"default","C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/index.js"),s(e)),e.exports=t.default}).call(this,r(2)(e))}])});
+define(["esri/arcgis/utils","esri/dijit/LayerList","esri/layers/FeatureLayer","esri/toolbars/draw"], function(__WEBPACK_EXTERNAL_MODULE_esri_arcgis_utils__, __WEBPACK_EXTERNAL_MODULE_esri_dijit_LayerList__, __WEBPACK_EXTERNAL_MODULE_esri_layers_FeatureLayer__, __WEBPACK_EXTERNAL_MODULE_esri_toolbars_draw__) { return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/ 		var executeModules = data[2];
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 		// add entry modules from loaded chunk to deferred list
+/******/ 		deferredModules.push.apply(deferredModules, executeModules || []);
+/******/
+/******/ 		// run deferred modules when all chunks ready
+/******/ 		return checkDeferredModules();
+/******/ 	};
+/******/ 	function checkDeferredModules() {
+/******/ 		var result;
+/******/ 		for(var i = 0; i < deferredModules.length; i++) {
+/******/ 			var deferredModule = deferredModules[i];
+/******/ 			var fulfilled = true;
+/******/ 			for(var j = 1; j < deferredModule.length; j++) {
+/******/ 				var depId = deferredModule[j];
+/******/ 				if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 			}
+/******/ 			if(fulfilled) {
+/******/ 				deferredModules.splice(i--, 1);
+/******/ 				result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 			}
+/******/ 		}
+/******/ 		return result;
+/******/ 	}
+/******/
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"main": 0
+/******/ 	};
+/******/
+/******/ 	var deferredModules = [];
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
+/******/
+/******/
+/******/ 	// add entry module to deferred list
+/******/ 	deferredModules.push(["./src/index.js","vendors"]);
+/******/ 	// run deferred modules when ready
+/******/ 	return checkDeferredModules();
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/A.js":
+/*!******************!*\
+  !*** ./src/A.js ***!
+  \******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _B = __webpack_require__(/*! ./B */ "./src/B.js");
+
+var _B2 = _interopRequireDefault(_B);
+
+var _FeatureLayer = __webpack_require__(/*! esri/layers/FeatureLayer */ "esri/layers/FeatureLayer");
+
+var _FeatureLayer2 = _interopRequireDefault(_FeatureLayer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var A = function (_React$Component) {
+    _inherits(A, _React$Component);
+
+    function A(props) {
+        _classCallCheck(this, A);
+
+        var _this = _possibleConstructorReturn(this, (A.__proto__ || Object.getPrototypeOf(A)).call(this, props));
+
+        _this.state = {
+            selected: null
+        };
+        _this.firePerimeterFL = new _FeatureLayer2.default("https://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire/FeatureServer/2", {
+            mode: _FeatureLayer2.default.MODE_ONDEMAND,
+            outFields: ["*"],
+            id: "firePerimeterFL"
+        });
+        _this.props.map.addLayer(_this.firePerimeterFL);
+        return _this;
+    }
+
+    _createClass(A, [{
+        key: 'changevalue',
+        value: function changevalue(e) {
+            this.setState(function (state, props) {
+                return {
+                    selected: e
+                };
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var current = this.state.selected;
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'h1',
+                    null,
+                    'A component after'
+                ),
+                current,
+                _react2.default.createElement(_B2.default, { list: [1, 2, 3, 4, 5, 6], map: this.props.map, callBack: function callBack(e) {
+                        return _this2.changevalue(e);
+                    } })
+            );
+        }
+    }, {
+        key: '__reactstandin__regenerateByEval',
+        // @ts-ignore
+        value: function __reactstandin__regenerateByEval(key, code) {
+            // @ts-ignore
+            this[key] = eval(code);
+        }
+    }]);
+
+    return A;
+}(_react2.default.Component);
+
+var _default = A;
+exports.default = _default;
+;
+
+(function () {
+    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(A, 'A', 'C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/A.js');
+    reactHotLoader.register(_default, 'default', 'C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/A.js');
+    leaveModule(module);
+})();
+
+;
+module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/B.js":
+/*!******************!*\
+  !*** ./src/B.js ***!
+  \******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _draw = __webpack_require__(/*! esri/toolbars/draw */ "esri/toolbars/draw");
+
+var _draw2 = _interopRequireDefault(_draw);
+
+var _LayerList = __webpack_require__(/*! esri/dijit/LayerList */ "esri/dijit/LayerList");
+
+var _LayerList2 = _interopRequireDefault(_LayerList);
+
+var _utils = __webpack_require__(/*! esri/arcgis/utils */ "esri/arcgis/utils");
+
+var _utils2 = _interopRequireDefault(_utils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var B = function (_React$Component) {
+    _inherits(B, _React$Component);
+
+    function B(props) {
+        _classCallCheck(this, B);
+
+        var _this = _possibleConstructorReturn(this, (B.__proto__ || Object.getPrototypeOf(B)).call(this, props));
+
+        _this.state = {
+            isDrawing: false
+        };
+        return _this;
+    }
+
+    _createClass(B, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            if (!this.myWidget) {
+                _utils2.default.createMap(this.props.map.itemId, "map").then(function (response) {
+                    _this2.myWidget = new _LayerList2.default({
+                        map: response.map,
+                        layers: _utils2.default.getLayerList(response)
+                    }, "layerList");
+                    _this2.myWidget.startup();
+                });
+                this.draw = new _draw2.default(this.props.map, {
+                    tooltipOffset: 20,
+                    drawTime: 90
+                });
+            }
+        }
+    }, {
+        key: "startDrawing",
+        value: function startDrawing(bool) {
+            this.setState({
+                isDrawing: !this.state.isDrawing
+            });
+            bool ? this.draw.activate(_draw2.default.POLYGON) : this.draw.deactivate();
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this3 = this;
+
+            var l = this.props.list;
+
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "h2",
+                    null,
+                    "B component"
+                ),
+                _react2.default.createElement(
+                    "button",
+                    { onClick: function onClick() {
+                            return _this3.startDrawing(!_this3.state.isDrawing);
+                        } },
+                    "start drawing"
+                ),
+                l.map(function (v, i) {
+                    return _react2.default.createElement(
+                        "div",
+                        { key: i, onClick: function onClick(e) {
+                                return _this3.props.callBack(v);
+                            } },
+                        v.toString() + " item in the list  "
+                    );
+                })
+            );
+        }
+    }, {
+        key: "__reactstandin__regenerateByEval",
+        // @ts-ignore
+        value: function __reactstandin__regenerateByEval(key, code) {
+            // @ts-ignore
+            this[key] = eval(code);
+        }
+    }]);
+
+    return B;
+}(_react2.default.Component);
+
+var _default = B;
+exports.default = _default;
+;
+
+(function () {
+    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(B, "B", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/B.js");
+    reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/B.js");
+    leaveModule(module);
+})();
+
+;
+module.exports = exports["default"];
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _A = __webpack_require__(/*! ./A.js */ "./src/A.js");
+
+var _A2 = _interopRequireDefault(_A);
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+var App = function App(props) {
+    return _react2.default.createElement(_A2.default, props);
+};
+
+App.load = function (props) {
+    _reactDom2.default.render(_react2.default.createElement(App, props), document.getElementById("react-legend"));
+};
+
+var _default = App;
+exports.default = _default;
+;
+
+(function () {
+    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(App, "App", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/index.js");
+    reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/index.js");
+    leaveModule(module);
+})();
+
+;
+module.exports = exports["default"];
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
+/***/ "esri/arcgis/utils":
+/*!************************************!*\
+  !*** external "esri/arcgis/utils" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_esri_arcgis_utils__;
+
+/***/ }),
+
+/***/ "esri/dijit/LayerList":
+/*!***************************************!*\
+  !*** external "esri/dijit/LayerList" ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_esri_dijit_LayerList__;
+
+/***/ }),
+
+/***/ "esri/layers/FeatureLayer":
+/*!*******************************************!*\
+  !*** external "esri/layers/FeatureLayer" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_esri_layers_FeatureLayer__;
+
+/***/ }),
+
+/***/ "esri/toolbars/draw":
+/*!*************************************!*\
+  !*** external "esri/toolbars/draw" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_esri_toolbars_draw__;
+
+/***/ })
+
+/******/ })});;
 //# sourceMappingURL=main.js.map
