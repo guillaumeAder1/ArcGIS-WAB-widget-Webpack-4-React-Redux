@@ -8,7 +8,7 @@ module.exports = {
         // Widget's entry point and all source code
         main: path.resolve(__dirname, './src/index'),
         // Vendors entry point (shared libraries React, Redux...).
-        vendors: Object.keys(pkg.dependencies)
+        //vendors: Object.keys(pkg.dependencies)
     },
     output: {
         // Generate UMD module to be compatible with WAB(Dojo) module loader.
@@ -27,6 +27,13 @@ module.exports = {
                 }
             }
         ]
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: { test: /[\\/]node_modules[\\/]/, name: "vendors", chunks: "all" }
+            }
+        }
     },
     externals: [
         // Exclude Dojo, Esri and WAB modules from build process.
