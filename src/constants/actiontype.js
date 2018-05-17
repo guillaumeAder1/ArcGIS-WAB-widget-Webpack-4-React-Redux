@@ -1,1 +1,2 @@
 export const ADD_ARTICLE = "ADD_ARTICLE";
+export const ASYNC_ADD_ARTICLE = "ASYNC_ADD_ARTICLE";

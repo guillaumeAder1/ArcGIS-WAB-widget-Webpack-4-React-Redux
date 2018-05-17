@@ -6,9 +6,7 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         // Widget's entry point and all source code
-        main: path.resolve(__dirname, './src/index'),
-        // Vendors entry point (shared libraries React, Redux...).
-        //vendors: Object.keys(pkg.dependencies)
+        main: path.resolve(__dirname, './src/index')       
     },
     output: {
         // Generate UMD module to be compatible with WAB(Dojo) module loader.

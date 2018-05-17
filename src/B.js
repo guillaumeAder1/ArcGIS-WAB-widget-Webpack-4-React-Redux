@@ -3,7 +3,7 @@ import Draw from "esri/toolbars/draw";
 import LayerList from "esri/dijit/LayerList"
 import arcgisUtils from "esri/arcgis/utils"
 import { connect } from "react-redux";
-import { addArticle } from "./actions/index";
+import { addArticle, asynAddArticle } from "./actions/index";
 
 class B extends React.Component {
 
@@ -12,6 +12,8 @@ class B extends React.Component {
         this.state = {
             isDrawing: false
         }
+        this.layerListRef = React.createRef()
+
     }
 
     componentDidMount() {
@@ -20,7 +22,7 @@ class B extends React.Component {
                 this.myWidget = new LayerList({
                     map: response.map,
                     layers: arcgisUtils.getLayerList(response)
-                }, "layerList");
+                }, this.layerListRef.current);
                 this.myWidget.startup();
             });
             this.draw = new Draw(this.props.map, {
@@ -41,6 +43,10 @@ class B extends React.Component {
         this.props.addArticle({ 'toktok': '465465465' });
     }
 
+    reduxAsync() {
+        this.props.asynAddArticle({ 'asun article': 'sdkfjhsduifhsdui' })
+    }
+
     render() {
         const l = this.props.list
 
@@ -49,8 +55,10 @@ class B extends React.Component {
             <div>
                 <h2>B component</h2>
                 <button onClick={() => this.redux()}>dispacth</button>
+                <button onClick={() => this.reduxAsync()}>dispacth async</button>
                 <button onClick={() => this.startDrawing(!this.state.isDrawing)}>start drawing</button>
                 {l.map((v, i) => <div key={i} onClick={e => this.props.callBack(v)}>{v.toString() + " item in the list  "}</div>)}
+                <div ref={this.layerListRef} />
 
             </div>
         )
@@ -59,7 +67,8 @@ class B extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addArticle: article => dispatch(addArticle(article))
+        addArticle: article => dispatch(addArticle(article)),
+        asynAddArticle: article => dispatch(asynAddArticle(article))
     };
 };
 

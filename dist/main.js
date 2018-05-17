@@ -325,6 +325,8 @@ var B = function (_React$Component) {
         _this.state = {
             isDrawing: false
         };
+        _this.layerListRef = _react2.default.createRef();
+
         return _this;
     }
 
@@ -338,7 +340,7 @@ var B = function (_React$Component) {
                     _this2.myWidget = new _LayerList2.default({
                         map: response.map,
                         layers: _utils2.default.getLayerList(response)
-                    }, "layerList");
+                    }, _this2.layerListRef.current);
                     _this2.myWidget.startup();
                 });
                 this.draw = new _draw2.default(this.props.map, {
@@ -359,6 +361,11 @@ var B = function (_React$Component) {
         key: "redux",
         value: function redux() {
             this.props.addArticle({ 'toktok': '465465465' });
+        }
+    }, {
+        key: "reduxAsync",
+        value: function reduxAsync() {
+            this.props.asynAddArticle({ 'asun article': 'sdkfjhsduifhsdui' });
         }
     }, {
         key: "render",
@@ -385,6 +392,13 @@ var B = function (_React$Component) {
                 _react2.default.createElement(
                     "button",
                     { onClick: function onClick() {
+                            return _this3.reduxAsync();
+                        } },
+                    "dispacth async"
+                ),
+                _react2.default.createElement(
+                    "button",
+                    { onClick: function onClick() {
                             return _this3.startDrawing(!_this3.state.isDrawing);
                         } },
                     "start drawing"
@@ -397,7 +411,8 @@ var B = function (_React$Component) {
                             } },
                         v.toString() + " item in the list  "
                     );
-                })
+                }),
+                _react2.default.createElement("div", { ref: this.layerListRef })
             );
         }
     }, {
@@ -416,6 +431,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         addArticle: function addArticle(article) {
             return dispatch((0, _index.addArticle)(article));
+        },
+        asynAddArticle: function asynAddArticle(article) {
+            return dispatch((0, _index.asynAddArticle)(article));
         }
     };
 };
@@ -459,34 +477,47 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */(function(module) {
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-exports.addArticle = undefined;
+exports.asynAddArticle = exports.addArticle = undefined;
 
 var _actiontype = __webpack_require__(/*! ../constants/actiontype */ "./src/constants/actiontype.js");
 
 (function () {
-  var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
 
-  enterModule && enterModule(module);
+    enterModule && enterModule(module);
 })();
 
+// export const addArticle = article => ({ type: ADD_ARTICLE, payload: article });
+
 var addArticle = exports.addArticle = function addArticle(article) {
-  return { type: _actiontype.ADD_ARTICLE, payload: article };
+    //return dispatch => {
+    dispatch({ type: _actiontype.ADD_ARTICLE, payload: article });
+    //}
+};
+
+var asynAddArticle = exports.asynAddArticle = function asynAddArticle(article) {
+    return function (dispatch) {
+        setTimeout(function (e) {
+            dispatch({ type: _actiontype.ASYNC_ADD_ARTICLE, payload: article });
+        }, 3000);
+    };
 };
 ;
 
 (function () {
-  var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
 
-  var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
 
-  if (!reactHotLoader) {
-    return;
-  }
+    if (!reactHotLoader) {
+        return;
+    }
 
-  reactHotLoader.register(addArticle, "addArticle", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/actions/index.js");
-  leaveModule(module);
+    reactHotLoader.register(addArticle, "addArticle", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/actions/index.js");
+    reactHotLoader.register(asynAddArticle, "asynAddArticle", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/actions/index.js");
+    leaveModule(module);
 })();
 
 ;
@@ -515,6 +546,7 @@ Object.defineProperty(exports, "__esModule", {
 })();
 
 var ADD_ARTICLE = exports.ADD_ARTICLE = "ADD_ARTICLE";
+var ASYNC_ADD_ARTICLE = exports.ASYNC_ADD_ARTICLE = "ASYNC_ADD_ARTICLE";
 ;
 
 (function () {
@@ -527,6 +559,7 @@ var ADD_ARTICLE = exports.ADD_ARTICLE = "ADD_ARTICLE";
   }
 
   reactHotLoader.register(ADD_ARTICLE, "ADD_ARTICLE", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/constants/actiontype.js");
+  reactHotLoader.register(ASYNC_ADD_ARTICLE, "ASYNC_ADD_ARTICLE", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/constants/actiontype.js");
   leaveModule(module);
 })();
 
@@ -657,6 +690,8 @@ var rootReducer = function rootReducer() {
     switch (action.type) {
         case _actiontype.ADD_ARTICLE:
             return _extends({}, state, { articles: [].concat(_toConsumableArray(state.articles), [action.payload]) });
+        case _actiontype.ASYNC_ADD_ARTICLE:
+            return _extends({}, state, { articles: [].concat(_toConsumableArray(state.articles), [action.payload]) });
 
         default:
             return state;
@@ -698,40 +733,48 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */(function(module) {
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+
+var _reduxThunk = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/lib/index.js");
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
 var _index = __webpack_require__(/*! ./reducers/index */ "./src/reducers/index.js");
 
 var _index2 = _interopRequireDefault(_index);
 
+var _reduxLogger = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (function () {
-  var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
 
-  enterModule && enterModule(module);
+    enterModule && enterModule(module);
 })();
 
-var store = (0, _redux.createStore)(_index2.default);
+var store = (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)((0, _reduxLogger.createLogger)(), _reduxThunk2.default));
+
+// const store = createStore(rootReducer);
 var _default = store;
 exports.default = _default;
 ;
 
 (function () {
-  var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
 
-  var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
 
-  if (!reactHotLoader) {
-    return;
-  }
+    if (!reactHotLoader) {
+        return;
+    }
 
-  reactHotLoader.register(store, "store", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/store.js");
-  reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/store.js");
-  leaveModule(module);
+    reactHotLoader.register(store, "store", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/store.js");
+    reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/store.js");
+    leaveModule(module);
 })();
 
 ;
