@@ -5,6 +5,7 @@
     ],
     "plugins": [
         "react-hot-loader/babel",
-        "add-module-exports"
+        "add-module-exports",
+        "transform-object-rest-spread"
     ]
 }

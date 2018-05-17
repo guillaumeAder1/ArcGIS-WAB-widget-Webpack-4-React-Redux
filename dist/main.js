@@ -296,6 +296,10 @@ var _utils = __webpack_require__(/*! esri/arcgis/utils */ "esri/arcgis/utils");
 
 var _utils2 = _interopRequireDefault(_utils);
 
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _index = __webpack_require__(/*! ./actions/index */ "./src/actions/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (function () {
@@ -352,6 +356,11 @@ var B = function (_React$Component) {
             bool ? this.draw.activate(_draw2.default.POLYGON) : this.draw.deactivate();
         }
     }, {
+        key: "redux",
+        value: function redux() {
+            this.props.addArticle({ 'toktok': '465465465' });
+        }
+    }, {
         key: "render",
         value: function render() {
             var _this3 = this;
@@ -365,6 +374,13 @@ var B = function (_React$Component) {
                     "h2",
                     null,
                     "B component"
+                ),
+                _react2.default.createElement(
+                    "button",
+                    { onClick: function onClick() {
+                            return _this3.redux();
+                        } },
+                    "dispacth"
                 ),
                 _react2.default.createElement(
                     "button",
@@ -396,7 +412,18 @@ var B = function (_React$Component) {
     return B;
 }(_react2.default.Component);
 
-var _default = B;
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        addArticle: function addArticle(article) {
+            return dispatch((0, _index.addArticle)(article));
+        }
+    };
+};
+
+// export default B
+
+var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(B);
+
 exports.default = _default;
 ;
 
@@ -410,6 +437,7 @@ exports.default = _default;
     }
 
     reactHotLoader.register(B, "B", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/B.js");
+    reactHotLoader.register(mapDispatchToProps, "mapDispatchToProps", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/B.js");
     reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/B.js");
     leaveModule(module);
 })();
@@ -417,6 +445,93 @@ exports.default = _default;
 ;
 module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/actions/index.js":
+/*!******************************!*\
+  !*** ./src/actions/index.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addArticle = undefined;
+
+var _actiontype = __webpack_require__(/*! ../constants/actiontype */ "./src/constants/actiontype.js");
+
+(function () {
+  var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+var addArticle = exports.addArticle = function addArticle(article) {
+  return { type: _actiontype.ADD_ARTICLE, payload: article };
+};
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(addArticle, "addArticle", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/actions/index.js");
+  leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/constants/actiontype.js":
+/*!*************************************!*\
+  !*** ./src/constants/actiontype.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+(function () {
+  var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+var ADD_ARTICLE = exports.ADD_ARTICLE = "ADD_ARTICLE";
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(ADD_ARTICLE, "ADD_ARTICLE", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/constants/actiontype.js");
+  leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
 
 /***/ }),
 
@@ -446,6 +561,12 @@ var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/i
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _store = __webpack_require__(/*! ./store */ "./src/store.js");
+
+var _store2 = _interopRequireDefault(_store);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (function () {
@@ -454,12 +575,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     enterModule && enterModule(module);
 })();
 
+/**REACT ONLY */
+// const App = (props) => {
+//     return (
+//         <A {...props} />
+//     )
+// };
+// App.load = (props) => {
+//     ReactDOM.render(<App {...props} />, document.getElementById("react-legend"));
+// }
+/**END REACT ONLY */
+
 var App = function App(props) {
     return _react2.default.createElement(_A2.default, props);
 };
-
 App.load = function (props) {
-    _reactDom2.default.render(_react2.default.createElement(App, props), document.getElementById("react-legend"));
+    _reactDom2.default.render(_react2.default.createElement(
+        _reactRedux.Provider,
+        { store: _store2.default },
+        _react2.default.createElement(App, props)
+    ), document.getElementById("react-legend"));
 };
 
 var _default = App;
@@ -478,6 +613,125 @@ exports.default = _default;
     reactHotLoader.register(App, "App", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/index.js");
     reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/index.js");
     leaveModule(module);
+})();
+
+;
+module.exports = exports["default"];
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/reducers/index.js":
+/*!*******************************!*\
+  !*** ./src/reducers/index.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _actiontype = __webpack_require__(/*! ../constants/actiontype */ "./src/constants/actiontype.js");
+
+(function () {
+    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var initialState = {
+    articles: []
+};
+var rootReducer = function rootReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case _actiontype.ADD_ARTICLE:
+            return _extends({}, state, { articles: [].concat(_toConsumableArray(state.articles), [action.payload]) });
+
+        default:
+            return state;
+    }
+};
+var _default = rootReducer;
+exports.default = _default;
+;
+
+(function () {
+    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(initialState, "initialState", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/reducers/index.js");
+    reactHotLoader.register(rootReducer, "rootReducer", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/reducers/index.js");
+    reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/reducers/index.js");
+    leaveModule(module);
+})();
+
+;
+module.exports = exports["default"];
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/store.js":
+/*!**********************!*\
+  !*** ./src/store.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+
+var _index = __webpack_require__(/*! ./reducers/index */ "./src/reducers/index.js");
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+  var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+var store = (0, _redux.createStore)(_index2.default);
+var _default = store;
+exports.default = _default;
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(store, "store", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/store.js");
+  reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/store.js");
+  leaveModule(module);
 })();
 
 ;

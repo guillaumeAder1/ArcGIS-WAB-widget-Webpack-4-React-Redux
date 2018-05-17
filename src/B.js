@@ -2,6 +2,8 @@ import React from 'react'
 import Draw from "esri/toolbars/draw";
 import LayerList from "esri/dijit/LayerList"
 import arcgisUtils from "esri/arcgis/utils"
+import { connect } from "react-redux";
+import { addArticle } from "./actions/index";
 
 class B extends React.Component {
 
@@ -35,6 +37,9 @@ class B extends React.Component {
         bool ? this.draw.activate(Draw.POLYGON) : this.draw.deactivate()
 
     }
+    redux() {
+        this.props.addArticle({ 'toktok': '465465465' });
+    }
 
     render() {
         const l = this.props.list
@@ -43,6 +48,7 @@ class B extends React.Component {
         return (
             <div>
                 <h2>B component</h2>
+                <button onClick={() => this.redux()}>dispacth</button>
                 <button onClick={() => this.startDrawing(!this.state.isDrawing)}>start drawing</button>
                 {l.map((v, i) => <div key={i} onClick={e => this.props.callBack(v)}>{v.toString() + " item in the list  "}</div>)}
 
@@ -51,6 +57,13 @@ class B extends React.Component {
     }
 }
 
-export default B
+const mapDispatchToProps = dispatch => {
+    return {
+        addArticle: article => dispatch(addArticle(article))
+    };
+};
+
+// export default B
+export default connect(null, mapDispatchToProps)(B);
 
 
