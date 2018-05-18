@@ -12,10 +12,10 @@ class B extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isDrawing: false
-        }
-        this.layerListRef = React.createRef()
-
+            isDrawing: false,
+            currentArticle: null
+        };
+        this.layerListRef = React.createRef();
     }
 
     componentDidMount() {
@@ -35,56 +35,61 @@ class B extends React.Component {
     }
 
     startDrawing(bool) {
-        this.setState({
-            isDrawing: !this.state.isDrawing
-        })
-        bool ? this.draw.activate(Draw.POLYGON) : this.draw.deactivate()
-
+        this.setState({ isDrawing: !this.state.isDrawing });
+        bool ? this.draw.activate(Draw.POLYGON) : this.draw.deactivate();
     }
     redux() {
-        this.props.addArticle({ 'toktok': '465465465' });
+        const key = "#" + this.state.currentArticle + " item";
+        const obj = {};
+        obj[key] = 'ijsd iouhdasui dhas uidhas';
+        this.props.addArticle(obj);
     }
 
     reduxAsync() {
-        this.props.asynAddArticle({ 'asun article': 'sdkfjhsduifhsdui' })
+        const key = "#" + this.state.currentArticle + " item";
+        const obj = {};
+        obj[key] = 'asdasd vsdfsd sdfgsdgdfhfghf fgf dghdfgdfgdfg';
+        this.props.asynAddArticle(obj)
+    }
+
+    reduxAsyncMix() {
+        const key = this.state.currentArticle
+        this.props.asynAddArticleMixing({ key: 'redux mixin' })
+    }
+
+    action() {
+        return (this.state.isDrawing) ? 'Stop' : 'Start';
+    }
+
+    updateState(value) {
+        this.props.callBack(value);
+        this.setState({ currentArticle: value });
     }
 
     render() {
-        const l = this.props.list
-
-
+        const l = this.props.list;
         return (
             <div>
                 <h2>B component</h2>
                 <button onClick={() => this.redux()}>dispacth</button>
                 <button onClick={() => this.reduxAsync()}>dispacth async</button>
-                <button onClick={() => this.startDrawing(!this.state.isDrawing)}>start drawing</button>
-                {l.map((v, i) => <div key={i} onClick={e => this.props.callBack(v)}>{v.toString() + " item in the list  "}</div>)}
+                <button onClick={() => this.reduxAsyncMix()}>dispacth async mixing</button>
+                <button onClick={() => this.startDrawing(!this.state.isDrawing)}>{this.action()} drawing</button>
+                {l.map((v, i) => <div key={i} onClick={e => this.updateState(v)}>{v.toString() + " item in the list  "}</div>)}
                 <div ref={this.layerListRef} />
-
             </div>
         )
     }
 }
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         addArticle: article => dispatch(addArticle(article)),
-//         asynAddArticle: article => dispatch(asynAddArticle(article))
-//     };
-// };
+const mapDispatchToProps = (dispatch) => bindActionCreators({ addArticle, asynAddArticle }, dispatch)
 
-// const mapDispatchToProps = dispatch => bindActionCreators({
-//     addArticle,
-//     asynAddArticle
-// });
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        addArticle,
-        asynAddArticle
-    }, dispatch)
-}
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({
+//         addArticle,
+//         asynAddArticle
+//     }, dispatch)
+// }
 
 
 // export default B
