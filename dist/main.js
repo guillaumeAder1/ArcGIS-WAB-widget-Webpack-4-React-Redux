@@ -300,6 +300,8 @@ var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-r
 
 var _index = __webpack_require__(/*! ./actions/index */ "./src/actions/index.js");
 
+var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (function () {
@@ -427,15 +429,18 @@ var B = function (_React$Component) {
     return B;
 }(_react2.default.Component);
 
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         addArticle: article => dispatch(addArticle(article)),
+//         asynAddArticle: article => dispatch(asynAddArticle(article))
+//     };
+// };
+
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-    return {
-        addArticle: function addArticle(article) {
-            return dispatch((0, _index.addArticle)(article));
-        },
-        asynAddArticle: function asynAddArticle(article) {
-            return dispatch((0, _index.asynAddArticle)(article));
-        }
-    };
+    return (0, _redux.bindActionCreators)({
+        addArticle: _index.addArticle,
+        asynAddArticle: _index.asynAddArticle
+    });
 };
 
 // export default B
@@ -492,14 +497,14 @@ var _actiontype = __webpack_require__(/*! ../constants/actiontype */ "./src/cons
 // export const addArticle = article => ({ type: ADD_ARTICLE, payload: article });
 
 var addArticle = exports.addArticle = function addArticle(article) {
-    //return dispatch => {
-    dispatch({ type: _actiontype.ADD_ARTICLE, payload: article });
-    //}
+    return function (dispatch) {
+        dispatch({ type: _actiontype.ADD_ARTICLE, payload: article });
+    };
 };
 
 var asynAddArticle = exports.asynAddArticle = function asynAddArticle(article) {
     return function (dispatch) {
-        setTimeout(function (e) {
+        return setTimeout(function (e) {
             dispatch({ type: _actiontype.ASYNC_ADD_ARTICLE, payload: article });
         }, 3000);
     };
@@ -620,14 +625,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**END REACT ONLY */
 
 var App = function App(props) {
-    return _react2.default.createElement(_A2.default, props);
-};
-App.load = function (props) {
-    _reactDom2.default.render(_react2.default.createElement(
+    return _react2.default.createElement(
         _reactRedux.Provider,
         { store: _store2.default },
-        _react2.default.createElement(App, props)
-    ), document.getElementById("react-legend"));
+        _react2.default.createElement(_A2.default, props)
+    );
+};
+App.load = function (props) {
+    _reactDom2.default.render(
+    // <Provider store={store}>
+    _react2.default.createElement(App, props),
+    // </Provider>,
+    document.getElementById("react-legend"));
 };
 
 var _default = App;
@@ -654,10 +663,10 @@ module.exports = exports["default"];
 
 /***/ }),
 
-/***/ "./src/reducers/index.js":
-/*!*******************************!*\
-  !*** ./src/reducers/index.js ***!
-  \*******************************/
+/***/ "./src/reducers/article.js":
+/*!*********************************!*\
+  !*** ./src/reducers/article.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -710,14 +719,68 @@ exports.default = _default;
         return;
     }
 
-    reactHotLoader.register(initialState, "initialState", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/reducers/index.js");
-    reactHotLoader.register(rootReducer, "rootReducer", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/reducers/index.js");
-    reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/reducers/index.js");
+    reactHotLoader.register(initialState, "initialState", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/reducers/article.js");
+    reactHotLoader.register(rootReducer, "rootReducer", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/reducers/article.js");
+    reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/reducers/article.js");
     leaveModule(module);
 })();
 
 ;
 module.exports = exports["default"];
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/reducers/index.js":
+/*!*******************************!*\
+  !*** ./src/reducers/index.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+
+var _article = __webpack_require__(/*! ./article */ "./src/reducers/article.js");
+
+var _article2 = _interopRequireDefault(_article);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+var _default = (0, _redux.combineReducers)({
+    article: _article2.default
+});
+
+exports.default = _default;
+;
+
+(function () {
+    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(_default, 'default', 'C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/reducers/index.js');
+    leaveModule(module);
+})();
+
+;
+module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
 
 /***/ }),
@@ -756,11 +819,33 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     enterModule && enterModule(module);
 })();
 
-var store = (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)((0, _reduxLogger.createLogger)(), _reduxThunk2.default));
+var initialState = {};
+var enhancers = [];
+var middleware = [(0, _reduxLogger.createLogger)(), _reduxThunk2.default];
 
-// const store = createStore(rootReducer);
-var _default = store;
+if (true) {
+    var devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
+    if (typeof devToolsExtension === 'function') {
+        enhancers.push(devToolsExtension());
+    }
+}
+var composedEnhancers = _redux.compose.apply(undefined, [_redux.applyMiddleware.apply(undefined, middleware)].concat(enhancers));
+
+var _default = (0, _redux.createStore)(_index2.default, initialState, composedEnhancers);
+
 exports.default = _default;
+
+// // original
+// const store = createStore(
+//     rootReducer,
+//     applyMiddleware(
+//         createLogger(),
+//         thunk
+//     )
+// );
+
+// export default store;
+
 ;
 
 (function () {
@@ -772,7 +857,10 @@ exports.default = _default;
         return;
     }
 
-    reactHotLoader.register(store, "store", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/store.js");
+    reactHotLoader.register(initialState, "initialState", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/store.js");
+    reactHotLoader.register(enhancers, "enhancers", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/store.js");
+    reactHotLoader.register(middleware, "middleware", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/store.js");
+    reactHotLoader.register(composedEnhancers, "composedEnhancers", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/store.js");
     reactHotLoader.register(_default, "default", "C:/Users/gader/Documents/arcgis_web_appbuilder_2.5/WebAppBuilderForArcGIS/server/apps/13/widgets/Legend/src/store.js");
     leaveModule(module);
 })();

@@ -4,6 +4,8 @@ import LayerList from "esri/dijit/LayerList"
 import arcgisUtils from "esri/arcgis/utils"
 import { connect } from "react-redux";
 import { addArticle, asynAddArticle } from "./actions/index";
+import { bindActionCreators } from 'redux'
+
 
 class B extends React.Component {
 
@@ -65,12 +67,17 @@ class B extends React.Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        addArticle: article => dispatch(addArticle(article)),
-        asynAddArticle: article => dispatch(asynAddArticle(article))
-    };
-};
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         addArticle: article => dispatch(addArticle(article)),
+//         asynAddArticle: article => dispatch(asynAddArticle(article))
+//     };
+// };
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    addArticle,
+    asynAddArticle
+});
 
 // export default B
 export default connect(null, mapDispatchToProps)(B);

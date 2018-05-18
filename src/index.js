@@ -18,14 +18,16 @@ import store from "./store";
 
 const App = (props) => {
     return (
-        <A {...props} />
+        <Provider store={store}>
+            <A {...props} />
+        </Provider>
     )
 };
 App.load = (props) => {
     ReactDOM.render(
-        <Provider store={store}>
-            <App {...props} />
-        </Provider>,
+        // <Provider store={store}>
+        <App {...props} />,
+        // </Provider>,
         document.getElementById("react-legend"));
 }
 
