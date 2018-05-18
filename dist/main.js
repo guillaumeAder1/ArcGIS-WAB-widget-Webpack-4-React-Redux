@@ -436,12 +436,17 @@ var B = function (_React$Component) {
 //     };
 // };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+// const mapDispatchToProps = dispatch => bindActionCreators({
+//     addArticle,
+//     asynAddArticle
+// });
+
+function mapDispatchToProps(dispatch) {
     return (0, _redux.bindActionCreators)({
         addArticle: _index.addArticle,
         asynAddArticle: _index.asynAddArticle
-    });
-};
+    }, dispatch);
+}
 
 // export default B
 
@@ -625,18 +630,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**END REACT ONLY */
 
 var App = function App(props) {
-    return _react2.default.createElement(
-        _reactRedux.Provider,
-        { store: _store2.default },
-        _react2.default.createElement(_A2.default, props)
-    );
+    return _react2.default.createElement(_A2.default, props);
 };
 App.load = function (props) {
-    _reactDom2.default.render(
-    // <Provider store={store}>
-    _react2.default.createElement(App, props),
-    // </Provider>,
-    document.getElementById("react-legend"));
+    _reactDom2.default.render(_react2.default.createElement(
+        _reactRedux.Provider,
+        { store: _store2.default },
+        _react2.default.createElement(App, props)
+    ), document.getElementById("react-legend"));
 };
 
 var _default = App;
@@ -687,8 +688,6 @@ var _actiontype = __webpack_require__(/*! ../constants/actiontype */ "./src/cons
     enterModule && enterModule(module);
 })();
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 var initialState = {
     articles: []
 };
@@ -698,9 +697,9 @@ var rootReducer = function rootReducer() {
 
     switch (action.type) {
         case _actiontype.ADD_ARTICLE:
-            return _extends({}, state, { articles: [].concat(_toConsumableArray(state.articles), [action.payload]) });
+            return _extends({}, state, { articles: state.articles.concat(action.payload) });
         case _actiontype.ASYNC_ADD_ARTICLE:
-            return _extends({}, state, { articles: [].concat(_toConsumableArray(state.articles), [action.payload]) });
+            return _extends({}, state, { articles: state.articles.concat(action.payload) });
 
         default:
             return state;
@@ -760,7 +759,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 })();
 
 var _default = (0, _redux.combineReducers)({
-    article: _article2.default
+    articleState: _article2.default
 });
 
 exports.default = _default;
@@ -821,7 +820,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var initialState = {};
 var enhancers = [];
-var middleware = [(0, _reduxLogger.createLogger)(), _reduxThunk2.default];
+var middleware = [_reduxThunk2.default, (0, _reduxLogger.createLogger)()];
 
 if (true) {
     var devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;

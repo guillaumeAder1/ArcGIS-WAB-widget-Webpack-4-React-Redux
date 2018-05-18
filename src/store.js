@@ -6,7 +6,7 @@ import { createLogger } from 'redux-logger';
 
 const initialState = {};
 const enhancers = [];
-const middleware = [createLogger(), thunk];
+const middleware = [thunk, createLogger()];
 
 if (process.env.NODE_ENV === 'development') {
     const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;

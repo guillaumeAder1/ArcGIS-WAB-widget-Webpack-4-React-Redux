@@ -74,10 +74,18 @@ class B extends React.Component {
 //     };
 // };
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-    addArticle,
-    asynAddArticle
-});
+// const mapDispatchToProps = dispatch => bindActionCreators({
+//     addArticle,
+//     asynAddArticle
+// });
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        addArticle,
+        asynAddArticle
+    }, dispatch)
+}
+
 
 // export default B
 export default connect(null, mapDispatchToProps)(B);
