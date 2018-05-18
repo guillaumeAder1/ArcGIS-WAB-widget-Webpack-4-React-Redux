@@ -4,9 +4,9 @@
     "description": "",
     "main": "Widget.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "build": "webpack --mode production",
-        "dev": "webpack --mode development --watch"
+        "dev": "webpack --mode development --watch",
+        "rename": "node node-script/replaceName.js"
     },
     "keywords": [],
     "author": "",

@@ -18,9 +18,7 @@ import store from "./store";
 
 const App = (props) => {
     return (
-
         <A {...props} />
-
     )
 };
 App.load = (props) => {
