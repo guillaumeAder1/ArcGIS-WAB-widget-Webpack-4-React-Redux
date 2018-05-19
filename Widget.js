@@ -37,8 +37,8 @@ define([
 ) {
 
     var clazz = declare([BaseWidget, _WidgetsInTemplateMixin], {
-      name: 'Legend',
-      baseClass: 'jimu-widget-Legend',
+      name: 'react-redux-widget',
+      baseClass: 'jimu-widget-react-redux-widget',
 
 
       startup: function () {
@@ -47,7 +47,7 @@ define([
 
       onOpen: function () {
         // load widget once DOM root element is created
-        require(['./widgets/Legend/dist/widget.js'], function (widget) {
+        require(['./widgets/react-redux-widget/dist/widget.js'], function (widget) {
           widget.load({ map: this.map, config: this.config })
         }.bind(this))
       },

@@ -11,10 +11,12 @@ const rl = readline.createInterface({
 });
 const templateFolder = './node-script/templates/';
 
+const curdir = process.cwd().split('\\').pop()
 
 new Promise((resolve) => {
-    rl.question('Enter Widget folder\'s name:', (answer) => {
+    rl.question('[current directory: "' + curdir + '"] leave empty or enter new Widget folder\'s name:', (answer) => {
         console.warn(`new widget's name is: ${answer}`);
+        if (answer.trim() === '') { answer = curdir }
         rl.close();
         resolve(answer)
     })

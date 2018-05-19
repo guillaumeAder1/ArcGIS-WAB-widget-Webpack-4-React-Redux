@@ -1,6 +1,6 @@
 define({
   root: ({
-    _widgetLabel: "Legend"
+    _widgetLabel: "react-redux-widget"
   }),
   "ar": 1,
   "bs": 1,
