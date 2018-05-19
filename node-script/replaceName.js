@@ -14,7 +14,7 @@ const templateFolder = './node-script/templates/';
 
 new Promise((resolve) => {
     rl.question('Enter Widget folder\'s name:', (answer) => {
-        console.log(`new widget's name is: ${answer}`);
+        console.warn(`new widget's name is: ${answer}`);
         rl.close();
         resolve(answer)
     })
