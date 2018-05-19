@@ -12,7 +12,7 @@ import store from "./store";
 //     )
 // };
 // App.load = (props) => {
-//     ReactDOM.render(<App {...props} />, document.getElementById("react-Legend"));
+//     ReactDOM.render(<App {...props} />, document.getElementById("react-@name"));
 // }
 /**END REACT ONLY */
 
@@ -26,7 +26,7 @@ App.load = (props) => {
         <Provider store={store}>
             <App {...props} />
         </Provider>,
-        document.getElementById("react-Legend"));
+        document.getElementById("react-@name"));
 }
 
 export default App

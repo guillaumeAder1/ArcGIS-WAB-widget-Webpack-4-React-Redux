@@ -47,7 +47,7 @@ define([
 
       onOpen: function () {
         // load widget once DOM root element is created
-        require(['./widgets/Legend/dist/main.js'], function (widget) {
+        require(['./widgets/Legend/dist/widget.js'], function (widget) {
           widget.load({ map: this.map, config: this.config })
         }.bind(this))
       },
